@@ -21,13 +21,10 @@ Originally developed as a university project, this network has evolved into **Pr
 
 # Current Release
 
-**Latest Stable Release:** `v0.2.0`
+**Latest Stable Release:** `v0.3.0`
 
-Current development is focused on **v0.3.0**, introducing:
+Current development is focused on **v0.4.0**, introducing:
 
-- Private IPv4 addressing
-- Centralized DHCP
-- Enterprise infrastructure services
 
 ---
 
@@ -44,6 +41,9 @@ Current development is focused on **v0.3.0**, introducing:
 - Disabled Dynamic Trunking Protocol (DTP)
 - Standardized enterprise naming conventions
 - Version-controlled development using Git & GitHub
+- Private IPv4 addressing
+- Centralized DHCP
+- Enterprise infrastructure services
 
 ---
 
@@ -106,7 +106,7 @@ enterprise-multi-branch-network/
 │
 ├── packet-tracer/
 │   ├── enterprise-network-v1.0-original.pkt
-│   └── enterprise-network-v0.2.0.pkt
+│   └── enterprise-network-v0.3.0.pkt
 │
 └── README.md
 ```
@@ -154,7 +154,7 @@ enterprise-multi-branch-network/
 
 ---
 
-## 🚧 v0.3.0 (In Progress)
+## ✅ v0.3.0
 
 - Private IPv4 addressing
 - DHCP deployment
@@ -182,6 +182,7 @@ enterprise-multi-branch-network/
 |----------|-------------|
 | v0.1.0 | Enterprise topology redesign |
 | v0.2.0 | Headquarters security hardening |
+| v0.3.0 | Improved overall functionality of headquarters |
 
 ---
 
