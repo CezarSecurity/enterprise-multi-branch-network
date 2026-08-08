@@ -15,16 +15,15 @@ This project simulates a modern enterprise network consisting of four interconne
 - Johor Bahru Branch
 - Kota Kinabalu Branch
 
-Originally developed as a university project, this network has evolved into **Project Zero** — an enterprise-grade networking portfolio focused on security hardening, standardized infrastructure, and realistic network design.
+Originally developed as a university project, this network has evolved into **Project Zero** — an enterprise-grade networking portfolio focused on security hardening, scalable routing, standardized infrastructure, and realistic enterprise network design.
 
 ---
 
 # Current Release
 
-**Latest Stable Release:** `v0.3.0`
+**Latest Stable Release:** `v0.4.0`
 
-Current development is focused on **v0.4.0**, introducing:
-
+Current development is focused on **v0.5.0**, introducing enterprise security through Access Control Lists (ACLs).
 
 ---
 
@@ -33,6 +32,7 @@ Current development is focused on **v0.4.0**, introducing:
 - Multi-site enterprise topology
 - Department-based VLAN segmentation
 - Layer 3 inter-VLAN routing
+- Dynamic routing using OSPF
 - Secure SSH device management
 - Port Security on access ports
 - BPDU Guard protection
@@ -42,8 +42,11 @@ Current development is focused on **v0.4.0**, introducing:
 - Standardized enterprise naming conventions
 - Version-controlled development using Git & GitHub
 - Private IPv4 addressing
-- Centralized DHCP
-- Enterprise infrastructure services
+- Centralized DHCP services
+- Centralized DNS services
+- Centralized Syslog logging
+- Centralized NTP time synchronization
+- Centralized TFTP configuration backups
 
 ---
 
@@ -57,6 +60,18 @@ Current development is focused on **v0.4.0**, introducing:
 - Dedicated Parking VLAN for unused interfaces
 - Native VLAN hardening
 - Disabled Dynamic Trunking Protocol (DTP)
+- Dynamic routing with OSPF replacing static routing
+
+---
+
+# Enterprise Services
+
+- DHCP
+- DNS
+- Syslog
+- NTP
+- HTTP
+- TFTP
 
 ---
 
@@ -106,7 +121,7 @@ enterprise-multi-branch-network/
 │
 ├── packet-tracer/
 │   ├── enterprise-network-v1.0-original.pkt
-│   └── enterprise-network-v0.3.0.pkt
+│   └── enterprise-network-v0.4.0.pkt
 │
 └── README.md
 ```
@@ -120,7 +135,13 @@ enterprise-multi-branch-network/
 - VLANs
 - IEEE 802.1Q Trunking
 - Inter-VLAN Routing
+- OSPF
 - SSH
+- DHCP
+- DNS
+- Syslog
+- NTP
+- TFTP
 - Spanning Tree Protocol (STP)
 - Port Security
 - Git
@@ -157,21 +178,37 @@ enterprise-multi-branch-network/
 ## ✅ v0.3.0
 
 - Private IPv4 addressing
-- DHCP deployment
-- Infrastructure services
-- DNS
-- NTP
+- Centralized DHCP deployment
+- DNS deployment
+- Syslog deployment
+- NTP deployment
+- HTTP server
+- TFTP backup server
+- Enterprise infrastructure services
 
 ---
 
-## Planned
+## ✅ v0.4.0
 
 - Enterprise-wide OSPF deployment
-- Access Control Lists (ACLs)
-- Branch security rollout
-- Syslog server
-- FTP/TFTP server
-- Enterprise monitoring
+- Migration from static routing to dynamic routing
+- Dynamic route advertisement between all sites
+- OSPF Area 0 backbone implementation
+- Automatic route learning across the WAN
+- Removal of legacy enterprise static routes
+- Full enterprise WAN connectivity validation
+
+---
+
+## 🚧 Planned (v0.5.0+)
+
+- Extended Access Control Lists (ACLs)
+- Inter-department security policies
+- Secure management access
+- Branch security hardening
+- Branch DHCP deployment
+- Enterprise monitoring improvements
+- Configuration cleanup and optimization
 - Final network validation
 
 ---
@@ -182,7 +219,8 @@ enterprise-multi-branch-network/
 |----------|-------------|
 | v0.1.0 | Enterprise topology redesign |
 | v0.2.0 | Headquarters security hardening |
-| v0.3.0 | Improved overall functionality of headquarters |
+| v0.3.0 | Enterprise infrastructure services deployment |
+| v0.4.0 | Migrated enterprise WAN from static routing to OSPF |
 
 ---
 
