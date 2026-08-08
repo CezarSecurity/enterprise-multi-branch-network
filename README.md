@@ -21,9 +21,9 @@ Originally developed as a university project, this network has evolved into **Pr
 
 # Current Release
 
-**Latest Stable Release:** `v0.4.0`
+**Latest Stable Release:** `v0.5.0`
 
-Current development is focused on **v0.5.0**, introducing enterprise security through Access Control Lists (ACLs).
+Current development is focused on **v0.6.0**, introducing branch security standardization, enterprise optimization, and infrastructure enhancements.
 
 ---
 
@@ -34,6 +34,10 @@ Current development is focused on **v0.5.0**, introducing enterprise security th
 - Layer 3 inter-VLAN routing
 - Dynamic routing using OSPF
 - Secure SSH device management
+- Management access restricted using ACLs
+- Department-based Access Control Lists (ACLs)
+- Wireless network isolation
+- IoT network isolation
 - Port Security on access ports
 - BPDU Guard protection
 - Native VLAN hardening
@@ -55,6 +59,10 @@ Current development is focused on **v0.5.0**, introducing enterprise security th
 - SSH Version 2 management
 - Local administrator authentication
 - Encrypted device passwords
+- Management-plane protection using VTY ACLs
+- Department isolation using Extended ACLs
+- Wireless client isolation
+- IoT network isolation
 - Port Security with Sticky MAC learning
 - BPDU Guard on user access ports
 - Dedicated Parking VLAN for unused interfaces
@@ -121,7 +129,7 @@ enterprise-multi-branch-network/
 │
 ├── packet-tracer/
 │   ├── enterprise-network-v1.0-original.pkt
-│   └── enterprise-network-v0.4.0.pkt
+│   └── enterprise-network-v0.5.0.pkt
 │
 └── README.md
 ```
@@ -136,6 +144,7 @@ enterprise-multi-branch-network/
 - IEEE 802.1Q Trunking
 - Inter-VLAN Routing
 - OSPF
+- Extended ACLs
 - SSH
 - DHCP
 - DNS
@@ -200,16 +209,29 @@ enterprise-multi-branch-network/
 
 ---
 
-## 🚧 Planned (v0.5.0+)
+## ✅ v0.5.0
 
-- Extended Access Control Lists (ACLs)
-- Inter-department security policies
-- Secure management access
+- Enterprise-wide Access Control Lists (ACLs)
+- Department isolation policies
+- Wireless network isolation
+- IoT network isolation
+- Secure SSH deployment across all Layer 3 devices
+- Management access restricted to IT and Management VLANs
+- Standardized router and Layer 3 switch security baseline
+- Enterprise credential standardization
+- Full enterprise security validation
+
+---
+
+## 🚧 Planned (v0.6.0+)
+
 - Branch security hardening
-- Branch DHCP deployment
+- Infrastructure optimization
 - Enterprise monitoring improvements
 - Configuration cleanup and optimization
-- Final network validation
+- Additional ACL enhancements
+- High availability features
+- Final enterprise validation
 
 ---
 
@@ -221,6 +243,7 @@ enterprise-multi-branch-network/
 | v0.2.0 | Headquarters security hardening |
 | v0.3.0 | Enterprise infrastructure services deployment |
 | v0.4.0 | Migrated enterprise WAN from static routing to OSPF |
+| v0.5.0 | Enterprise security hardening with ACLs and secure SSH management |
 
 ---
 
