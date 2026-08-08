@@ -6,7 +6,7 @@
 
 ---
 
-## Overview
+# Overview
 
 This project simulates a modern enterprise network consisting of four interconnected locations:
 
@@ -15,24 +15,54 @@ This project simulates a modern enterprise network consisting of four interconne
 - Johor Bahru Branch
 - Kota Kinabalu Branch
 
-The network was originally developed as a university project and has since been redesigned into a portfolio-quality enterprise network with standardized layouts, naming conventions, and documentation.
+Originally developed as a university project, this network has evolved into **Project Zero** — an enterprise-grade networking portfolio focused on security hardening, standardized infrastructure, and realistic network design.
 
 ---
 
-## Features
+# Current Release
+
+**Latest Stable Release:** `v0.2.0`
+
+Current development is focused on **v0.3.0**, introducing:
+
+- Private IPv4 addressing
+- Centralized DHCP
+- Enterprise infrastructure services
+
+---
+
+# Features
 
 - Multi-site enterprise topology
-- Dedicated headquarters and branch offices
-- Department-based network segmentation
+- Department-based VLAN segmentation
+- Layer 3 inter-VLAN routing
+- Secure SSH device management
+- Port Security on access ports
+- BPDU Guard protection
+- Native VLAN hardening
+- Parking VLAN for unused ports
+- Disabled Dynamic Trunking Protocol (DTP)
 - Standardized enterprise naming conventions
-- Consistent visual design across all sites
 - Version-controlled development using Git & GitHub
 
 ---
 
-## Network Overview
+# Security Features
 
-### Enterprise WAN
+- SSH Version 2 management
+- Local administrator authentication
+- Encrypted device passwords
+- Port Security with Sticky MAC learning
+- BPDU Guard on user access ports
+- Dedicated Parking VLAN for unused interfaces
+- Native VLAN hardening
+- Disabled Dynamic Trunking Protocol (DTP)
+
+---
+
+# Network Overview
+
+## Enterprise WAN
 
 ![Enterprise Overview](images/overview.png)
 
@@ -62,7 +92,7 @@ The network was originally developed as a university project and has since been 
 
 ---
 
-## Project Structure
+# Project Structure
 
 ```text
 enterprise-multi-branch-network/
@@ -75,52 +105,87 @@ enterprise-multi-branch-network/
 │   └── kota.png
 │
 ├── packet-tracer/
-│   ├── enterprise-network-V1.0-original.pkt
-│   └── enterprise-network-V2.0-working.pkt
+│   ├── enterprise-network-v1.0-original.pkt
+│   └── enterprise-network-v0.2.0.pkt
 │
 └── README.md
 ```
 
 ---
 
-## Technologies
+# Technologies
 
 - Cisco Packet Tracer 9
+- Cisco IOS
+- VLANs
+- IEEE 802.1Q Trunking
+- Inter-VLAN Routing
+- SSH
+- Spanning Tree Protocol (STP)
+- Port Security
 - Git
 - GitHub
 
 ---
 
-## Development Roadmap
+# Development Roadmap
 
-### v0.1.0
+## ✅ v0.1.0
 
 - Enterprise topology redesign
 - Professional branch layouts
 - Standardized device naming
 - Improved visual consistency
-
-###Planned
-
-- VLAN redesign
-- Secure management (SSH)
-- ACL implementation
-- Port Security
-- DHCP Snooping
-- Dynamic routing improvements
-- Complete network documentation
+- GitHub repository
+- Project documentation
 
 ---
 
-## Version History
+## ✅ v0.2.0
+
+- Headquarters security hardening
+- SSH management
+- Local user authentication
+- Port Security
+- BPDU Guard
+- Parking VLAN implementation
+- Native VLAN hardening
+- Disabled Dynamic Trunking Protocol (DTP)
+
+---
+
+## 🚧 v0.3.0 (In Progress)
+
+- Private IPv4 addressing
+- DHCP deployment
+- Infrastructure services
+- DNS
+- NTP
+
+---
+
+## Planned
+
+- Enterprise-wide OSPF deployment
+- Access Control Lists (ACLs)
+- Branch security rollout
+- Syslog server
+- FTP/TFTP server
+- Enterprise monitoring
+- Final network validation
+
+---
+
+# Version History
 
 | Version | Description |
 |----------|-------------|
 | v0.1.0 | Enterprise topology redesign |
+| v0.2.0 | Headquarters security hardening |
 
 ---
 
-## Author
+# Author
 
 **Cezar Abou Al Mouna**
 
