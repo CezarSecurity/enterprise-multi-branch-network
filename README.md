@@ -2,8 +2,6 @@
 
 > A professionally documented enterprise network built using Cisco Packet Tracer.
 
-![Overview](images/overview.png)
-
 ---
 
 # Overview
@@ -21,9 +19,9 @@ Originally developed as a university project, this network has evolved into **Pr
 
 # Current Release
 
-**Latest Stable Release:** `v0.5.0`
+**Latest Stable Release:** `v0.6.0`
 
-Current development is focused on **v0.6.0**, introducing branch security standardization, enterprise optimization, and infrastructure enhancements.
+Current development is focused on **v0.7.0**, introducing enterprise monitoring, infrastructure services expansion, and final production-ready enhancements.
 
 ---
 
@@ -43,7 +41,9 @@ Current development is focused on **v0.6.0**, introducing branch security standa
 - Native VLAN hardening
 - Parking VLAN for unused ports
 - Disabled Dynamic Trunking Protocol (DTP)
-- Standardized enterprise naming conventions
+- Enterprise MOTD login banner
+- Standardized interface descriptions
+- Standardized device naming conventions
 - Version-controlled development using Git & GitHub
 - Private IPv4 addressing
 - Centralized DHCP services
@@ -105,7 +105,7 @@ Current development is focused on **v0.6.0**, introducing branch security standa
 
 ## Johor Bahru Branch
 
-![Johor](images/johor.png)
+![Johor Bahru](images/johor.png)
 
 ---
 
@@ -129,7 +129,7 @@ enterprise-multi-branch-network/
 │
 ├── packet-tracer/
 │   ├── enterprise-network-v1.0-original.pkt
-│   └── enterprise-network-v0.5.0.pkt
+│   └── enterprise-network-v0.6.0.pkt
 │
 └── README.md
 ```
@@ -167,7 +167,7 @@ enterprise-multi-branch-network/
 - Standardized device naming
 - Improved visual consistency
 - GitHub repository
-- Project documentation
+- Initial project documentation
 
 ---
 
@@ -216,22 +216,34 @@ enterprise-multi-branch-network/
 - Wireless network isolation
 - IoT network isolation
 - Secure SSH deployment across all Layer 3 devices
-- Management access restricted to IT and Management VLANs
+- Management access restricted to authorized management networks
 - Standardized router and Layer 3 switch security baseline
 - Enterprise credential standardization
 - Full enterprise security validation
 
 ---
 
-## 🚧 Planned (v0.6.0+)
+## ✅ v0.6.0
 
-- Branch security hardening
-- Infrastructure optimization
-- Enterprise monitoring improvements
-- Configuration cleanup and optimization
-- Additional ACL enhancements
-- High availability features
-- Final enterprise validation
+- Infrastructure configuration standardization
+- Standardized interface descriptions
+- Enterprise MOTD banner deployment
+- Consistent management account configuration
+- Removal of obsolete static routes and legacy configuration
+- Configuration cleanup across all Layer 3 devices
+- Enterprise configuration consistency improvements
+
+---
+
+## Planned
+
+- SNMP monitoring
+- Network performance monitoring
+- Automated configuration management
+- High availability enhancements
+- Additional enterprise security controls
+- Final production validation
+- Version 1.0.0 release
 
 ---
 
@@ -244,6 +256,7 @@ enterprise-multi-branch-network/
 | v0.3.0 | Enterprise infrastructure services deployment |
 | v0.4.0 | Migrated enterprise WAN from static routing to OSPF |
 | v0.5.0 | Enterprise security hardening with ACLs and secure SSH management |
+| v0.6.0 | Enterprise infrastructure standardization and configuration optimization |
 
 ---
 
@@ -253,4 +266,4 @@ enterprise-multi-branch-network/
 
 Cybersecurity Student
 
-GitHub: https://github.com/CezarSecurity
+GitHub: [CezarSecurity](https://github.com/CezarSecurity)
