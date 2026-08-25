@@ -1,0 +1,213 @@
+!
+version 12.2(37)SE1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+service password-encryption
+!
+hostname PNG-DIST
+!
+!
+no profinet
+enable secret 5 $1$mERr$OQbVj29IGFG5IXoBk.XHw0
+!
+!
+!
+!
+!
+ip routing
+!
+!
+!
+!
+username netadmin privilege 15 secret 5 $1$mERr$OQbVj29IGFG5IXoBk.XHw0
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip ssh version 2
+ip domain-name projectzero.local
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/1
+ description Trunk to PNG Access Switch 1
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 15,25,35,45,55,65,75,85,99
+!
+interface FastEthernet0/2
+ description Trunk to PNG Access Switch 2
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 15,25,35,45,55,65,75,85,99
+!
+interface FastEthernet0/3
+ description Trunk to PNG Access Switch 3
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 15,25,35,45,55,65,75,85,99
+!
+interface FastEthernet0/4
+ description Trunk to PNG Access Switch 4
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 15,25,35,45,55,65,75,85,99
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet0/5
+ description Trunk to PNG Access Switch 5
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 15,25,35,45,55,65,75,85,99
+!
+interface FastEthernet0/6
+ description Trunk to PNG Access Switch 6
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 15,25,35,45,55,65,75,85,99
+!
+interface FastEthernet0/7
+ description Trunk to PNG Access Switch 7
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 15,25,35,45,55,65,75,85,99
+!
+interface FastEthernet0/8
+!
+interface FastEthernet0/9
+!
+interface FastEthernet0/10
+!
+interface FastEthernet0/11
+!
+interface FastEthernet0/12
+!
+interface FastEthernet0/13
+!
+interface FastEthernet0/14
+!
+interface FastEthernet0/15
+!
+interface FastEthernet0/16
+!
+interface FastEthernet0/17
+!
+interface FastEthernet0/18
+!
+interface FastEthernet0/19
+!
+interface FastEthernet0/20
+!
+interface FastEthernet0/21
+!
+interface FastEthernet0/22
+!
+interface FastEthernet0/23
+!
+interface FastEthernet0/24
+!
+interface GigabitEthernet0/1
+ description Routed Uplink to PNG-RTR
+ no switchport
+ ip address 200.20.0.2 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan15
+ mac-address 00e0.f704.3301
+ ip address 200.20.20.1 255.255.255.224
+!
+interface Vlan25
+ mac-address 00e0.f704.3302
+ ip address 200.20.20.33 255.255.255.224
+!
+interface Vlan35
+ mac-address 00e0.f704.3303
+ ip address 200.20.20.65 255.255.255.224
+!
+interface Vlan45
+ mac-address 00e0.f704.3304
+ ip address 200.20.20.97 255.255.255.224
+!
+interface Vlan55
+ mac-address 00e0.f704.3305
+ ip address 200.20.20.129 255.255.255.224
+!
+interface Vlan65
+ mac-address 00e0.f704.3306
+ ip address 200.20.20.161 255.255.255.224
+!
+interface Vlan75
+ mac-address 00e0.f704.3307
+ ip address 200.20.20.193 255.255.255.224
+!
+interface Vlan85
+ mac-address 00e0.f704.3308
+ ip address 200.20.20.225 255.255.255.224
+!
+interface Vlan99
+ mac-address 00e0.f704.3309
+ no ip address
+!
+router ospf 10
+ router-id 2.2.2.2
+ log-adjacency-changes
+ passive-interface default
+ no passive-interface GigabitEthernet0/1
+ network 200.20.0.0 0.0.0.3 area 0
+ network 200.20.20.0 0.0.0.255 area 0
+!
+ip classless
+ip route 0.0.0.0 0.0.0.0 200.20.0.1 
+!
+ip flow-export version 9
+!
+!
+ip access-list standard SSH-MGMT
+ permit 10.10.30.0 0.0.0.31
+ permit 10.10.99.0 0.0.0.31
+!
+banner motd #
+****************************************************
+*        PROJECT ZERO ENTERPRISE NETWORK           *
+*                                                  *
+*              AUTHORIZED ACCESS ONLY              *
+*                                                  *
+* Unauthorized access is prohibited.               *
+****************************************************
+#
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ access-class SSH-MGMT in
+ login local
+ transport input ssh
+line vty 5 15
+ access-class SSH-MGMT in
+ login local
+ transport input ssh
+!
+!
+!
+!
+end
+

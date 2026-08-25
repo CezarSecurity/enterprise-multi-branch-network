@@ -1,0 +1,127 @@
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+service password-encryption
+!
+hostname KOTA-RTR
+!
+!
+!
+enable secret 5 $1$mERr$OQbVj29IGFG5IXoBk.XHw0
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+username netadmin privilege 15 secret 5 $1$mERr$OQbVj29IGFG5IXoBk.XHw0
+!
+!
+license udi pid CISCO2911/K9 sn FTX1524PU0Q-
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip ssh version 2
+ip domain-name projectzero.local
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ description Link to KOTA-DIST
+ ip address 200.40.0.1 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface GigabitEthernet0/2
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Serial0/0/0
+ description WAN Link to KL-RTR
+ ip address 200.0.0.10 255.255.255.252
+!
+interface Serial0/0/1
+ no ip address
+ clock rate 2000000
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router ospf 10
+ router-id 4.4.4.1
+ log-adjacency-changes
+ passive-interface default
+ no passive-interface GigabitEthernet0/0
+ no passive-interface Serial0/0/0
+ network 200.40.0.0 0.0.0.3 area 0
+ network 200.0.0.8 0.0.0.3 area 0
+!
+ip classless
+ip route 0.0.0.0 0.0.0.0 200.0.0.9 
+!
+ip flow-export version 9
+!
+!
+ip access-list standard SSH-MGMT
+ permit 10.10.30.0 0.0.0.31
+ permit 10.10.99.0 0.0.0.31
+!
+banner motd #
+****************************************************
+*        PROJECT ZERO ENTERPRISE NETWORK           *
+*                                                  *
+*              AUTHORIZED ACCESS ONLY              *
+*                                                  *
+* Unauthorized access is prohibited.               *
+****************************************************
+#
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ access-class SSH-MGMT in
+ login local
+ transport input ssh
+line vty 5 15
+ access-class SSH-MGMT in
+ login local
+ transport input ssh
+!
+!
+!
+end
+

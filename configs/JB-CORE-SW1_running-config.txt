@@ -1,0 +1,217 @@
+!
+version 12.2(37)SE1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+service password-encryption
+!
+hostname JB-DIST
+!
+!
+no profinet
+enable secret 5 $1$mERr$OQbVj29IGFG5IXoBk.XHw0
+!
+!
+!
+!
+!
+ip routing
+!
+!
+!
+!
+username netadmin privilege 15 secret 5 $1$mERr$OQbVj29IGFG5IXoBk.XHw0
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip ssh version 2
+ip domain-name projectzero.local
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/1
+ description Trunk to JB Access Switch 1
+ switchport trunk native vlan 199
+ switchport trunk allowed vlan 110,120,130,140,150,160,170,180,199
+!
+interface FastEthernet0/2
+ description Trunk to JB Access Switch 2
+ switchport trunk native vlan 199
+ switchport trunk allowed vlan 110,120,130,140,150,160,170,180,199
+!
+interface FastEthernet0/3
+ description Trunk to JB Access Switch 3
+ switchport trunk native vlan 199
+ switchport trunk allowed vlan 110,120,130,140,150,160,170,180,199
+!
+interface FastEthernet0/4
+ description Trunk to JB Access Switch 4
+ switchport trunk native vlan 199
+ switchport trunk allowed vlan 110,120,130,140,150,160,170,180,199
+!
+interface FastEthernet0/5
+ description Trunk to JB Access Switch 5
+ switchport trunk native vlan 199
+ switchport trunk allowed vlan 110,120,130,140,150,160,170,180,199
+!
+interface FastEthernet0/6
+ description Trunk to JB Access Switch 6
+ switchport trunk native vlan 199
+ switchport trunk allowed vlan 110,120,130,140,150,160,170,180,199
+!
+interface FastEthernet0/7
+ description Trunk to JB Access Switch 7
+ switchport trunk native vlan 199
+ switchport trunk allowed vlan 110,120,130,140,150,160,170,180,199
+!
+interface FastEthernet0/8
+ description Trunk to JB Access Switch 8
+ switchport trunk native vlan 199
+ switchport trunk allowed vlan 110,120,130,140,150,160,170,180,199
+!
+interface FastEthernet0/9
+ description Trunk to JB Access Switch 9
+ switchport trunk native vlan 199
+ switchport trunk allowed vlan 110,120,130,140,150,160,170,180,199
+!
+interface FastEthernet0/10
+!
+interface FastEthernet0/11
+!
+interface FastEthernet0/12
+!
+interface FastEthernet0/13
+!
+interface FastEthernet0/14
+!
+interface FastEthernet0/15
+!
+interface FastEthernet0/16
+!
+interface FastEthernet0/17
+!
+interface FastEthernet0/18
+!
+interface FastEthernet0/19
+!
+interface FastEthernet0/20
+!
+interface FastEthernet0/21
+!
+interface FastEthernet0/22
+!
+interface FastEthernet0/23
+!
+interface FastEthernet0/24
+!
+interface GigabitEthernet0/1
+ description Routed Uplink to JB-RTR
+ no switchport
+ ip address 200.30.0.2 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan110
+ mac-address 0002.169a.6001
+ ip address 200.30.30.1 255.255.255.224
+!
+interface Vlan120
+ mac-address 0002.169a.6002
+ ip address 200.30.30.33 255.255.255.224
+!
+interface Vlan130
+ mac-address 0002.169a.6003
+ ip address 200.30.30.65 255.255.255.224
+!
+interface Vlan140
+ mac-address 0002.169a.6004
+ ip address 200.30.30.97 255.255.255.224
+!
+interface Vlan150
+ mac-address 0002.169a.6005
+ ip address 200.30.30.129 255.255.255.224
+!
+interface Vlan160
+ mac-address 0002.169a.6006
+ ip address 200.30.30.161 255.255.255.224
+!
+interface Vlan170
+ mac-address 0002.169a.6007
+ ip address 200.30.30.193 255.255.255.224
+!
+interface Vlan180
+ mac-address 0002.169a.6008
+ ip address 200.30.30.225 255.255.255.224
+!
+interface Vlan199
+ mac-address 0002.169a.6009
+ no ip address
+!
+router ospf 10
+ router-id 3.3.3.2
+ log-adjacency-changes
+ passive-interface default
+ no passive-interface GigabitEthernet0/1
+ network 200.30.0.0 0.0.0.3 area 0
+ network 200.30.30.0 0.0.0.255 area 0
+!
+ip classless
+ip route 0.0.0.0 0.0.0.0 200.30.0.1 
+!
+ip flow-export version 9
+!
+!
+ip access-list standard SSH-MGMT
+ permit 10.10.30.0 0.0.0.31
+ permit 10.10.99.0 0.0.0.31
+!
+banner motd #
+****************************************************
+*        PROJECT ZERO ENTERPRISE NETWORK           *
+*                                                  *
+*              AUTHORIZED ACCESS ONLY              *
+*                                                  *
+* Unauthorized access is prohibited.               *
+****************************************************
+#
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ access-class SSH-MGMT in
+ login local
+ transport input ssh
+line vty 5 15
+ access-class SSH-MGMT in
+ login local
+ transport input ssh
+!
+!
+!
+!
+end
+

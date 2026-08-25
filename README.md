@@ -1,85 +1,112 @@
 # Enterprise Multi-Branch Network
 
-> A professionally documented enterprise network built using Cisco Packet Tracer.
+> A professionally designed enterprise network built using Cisco Packet Tracer, demonstrating secure multi-site connectivity, Layer 3 switching, dynamic routing, and centralized infrastructure services.
+
+![Version](https://img.shields.io/badge/Version-v0.7.0-blue)
+![Cisco Packet Tracer](https://img.shields.io/badge/Cisco-Packet%20Tracer-9.x-green)
+![Routing](https://img.shields.io/badge/Routing-OSPF-success)
+![License](https://img.shields.io/badge/License-MIT-orange)
+
+---
+
+# Project Highlights
+
+- Four-site enterprise network
+- Dynamic routing using OSPF Area 0
+- Layer 3 inter-VLAN routing
+- Enterprise VLAN segmentation
+- Secure SSH device management
+- Extended Access Control Lists (ACLs)
+- DHCP, DNS, HTTP, Syslog, NTP and TFTP services
+- Professional technical documentation
+- Full Layer 3 device configurations included
+- Version-controlled development using Git & GitHub
 
 ---
 
 # Overview
 
-This project simulates a modern enterprise network consisting of four interconnected locations:
+Project Zero simulates a modern enterprise network consisting of four interconnected locations:
 
 - Headquarters (Kuala Lumpur)
 - Penang Branch
 - Johor Bahru Branch
 - Kota Kinabalu Branch
 
-Originally developed as a university project, this network has evolved into **Project Zero** — an enterprise-grade networking portfolio focused on security hardening, scalable routing, standardized infrastructure, and realistic enterprise network design.
+Originally developed as a university project, this network has evolved into an enterprise-grade networking portfolio focused on secure infrastructure design, dynamic routing, centralized services, and professional documentation.
 
 ---
 
 # Current Release
 
-**Latest Stable Release:** `v0.6.0`
+**Latest Stable Release:** `v0.7.0`
 
-Current development is focused on **v0.7.0**, introducing enterprise monitoring, infrastructure services expansion, and final production-ready enhancements.
+Current development is focused on **v0.8.0**, introducing final optimization, production validation, and repository polish before the Version 1.0 release.
 
 ---
 
 # Features
 
 - Multi-site enterprise topology
-- Department-based VLAN segmentation
 - Layer 3 inter-VLAN routing
-- Dynamic routing using OSPF
-- Secure SSH device management
-- Management access restricted using ACLs
-- Department-based Access Control Lists (ACLs)
+- OSPF dynamic routing
+- Department-based VLAN segmentation
+- Secure SSH management
+- Management VTY ACLs
+- Extended ACLs
 - Wireless network isolation
 - IoT network isolation
-- Port Security on access ports
-- BPDU Guard protection
+- Port Security
+- Sticky MAC learning
+- BPDU Guard
 - Native VLAN hardening
-- Parking VLAN for unused ports
+- Parking VLAN implementation
 - Disabled Dynamic Trunking Protocol (DTP)
-- Enterprise MOTD login banner
+- Enterprise MOTD banner
 - Standardized interface descriptions
-- Standardized device naming conventions
-- Version-controlled development using Git & GitHub
 - Private IPv4 addressing
-- Centralized DHCP services
-- Centralized DNS services
-- Centralized Syslog logging
-- Centralized NTP time synchronization
-- Centralized TFTP configuration backups
-
----
-
-# Security Features
-
-- SSH Version 2 management
-- Local administrator authentication
-- Encrypted device passwords
-- Management-plane protection using VTY ACLs
-- Department isolation using Extended ACLs
-- Wireless client isolation
-- IoT network isolation
-- Port Security with Sticky MAC learning
-- BPDU Guard on user access ports
-- Dedicated Parking VLAN for unused interfaces
-- Native VLAN hardening
-- Disabled Dynamic Trunking Protocol (DTP)
-- Dynamic routing with OSPF replacing static routing
+- Centralized DHCP
+- Centralized DNS
+- Centralized HTTP
+- Centralized Syslog
+- Centralized NTP
+- Centralized TFTP
 
 ---
 
 # Enterprise Services
 
-- DHCP
-- DNS
-- Syslog
-- NTP
-- HTTP
-- TFTP
+The headquarters hosts the centralized infrastructure services.
+
+| Service | Purpose |
+|----------|---------|
+| DHCP | Dynamic IP address assignment |
+| DNS | Internal name resolution |
+| HTTP | Enterprise web services |
+| Syslog | Centralized logging |
+| NTP | Time synchronization |
+| TFTP | Configuration backup |
+
+---
+
+# Security Features
+
+Project Zero implements layered security controls including:
+
+- SSH Version 2
+- Local administrator authentication
+- Encrypted passwords
+- Extended ACLs
+- Management VTY ACLs
+- Department isolation
+- Wireless isolation
+- IoT isolation
+- Port Security
+- Sticky MAC learning
+- BPDU Guard
+- Native VLAN hardening
+- Parking VLANs
+- Disabled Dynamic Trunking Protocol (DTP)
 
 ---
 
@@ -115,11 +142,29 @@ Current development is focused on **v0.7.0**, introducing enterprise monitoring,
 
 ---
 
-# Project Structure
+# Repository Structure
 
 ```text
 enterprise-multi-branch-network/
 
+├── configs/
+│   ├── KL-RTR.txt
+│   ├── KL-DIST.txt
+│   ├── PNG-RTR.txt
+│   ├── PNG-DIST.txt
+│   ├── JB-RTR.txt
+│   ├── JB-DIST.txt
+│   ├── KOTA-RTR.txt
+│   └── KOTA-DIST.txt
+│
+├── docs/
+│   ├── architecture.md
+│   ├── ip-addressing.md
+│   ├── routing.md
+│   ├── security.md
+│   ├── validation.md
+│   └── vlan-design.md
+│
 ├── images/
 │   ├── overview.png
 │   ├── headquarters.png
@@ -129,10 +174,43 @@ enterprise-multi-branch-network/
 │
 ├── packet-tracer/
 │   ├── enterprise-network-v1.0-original.pkt
-│   └── enterprise-network-v0.6.0.pkt
+│   └── enterprise-network-v0.7.0.pkt
 │
+├── .gitignore
+├── CHANGELOG.md
+├── LICENSE
 └── README.md
 ```
+
+---
+
+# Documentation
+
+Comprehensive technical documentation is available in the `docs/` directory.
+
+- Enterprise Architecture
+- IP Addressing Plan
+- VLAN Design
+- Routing Design
+- Security Architecture
+- Network Validation
+
+---
+
+# Device Configurations
+
+The `configs/` directory contains the running configurations for all Layer 3 devices in the enterprise.
+
+Included devices:
+
+- KL-RTR
+- KL-DIST
+- PNG-RTR
+- PNG-DIST
+- JB-RTR
+- JB-DIST
+- KOTA-RTR
+- KOTA-DIST
 
 ---
 
@@ -141,17 +219,18 @@ enterprise-multi-branch-network/
 - Cisco Packet Tracer 9
 - Cisco IOS
 - VLANs
-- IEEE 802.1Q Trunking
-- Inter-VLAN Routing
+- IEEE 802.1Q
+- Layer 3 Switching
 - OSPF
 - Extended ACLs
 - SSH
 - DHCP
 - DNS
+- HTTP
 - Syslog
 - NTP
 - TFTP
-- Spanning Tree Protocol (STP)
+- STP
 - Port Security
 - Git
 - GitHub
@@ -160,103 +239,31 @@ enterprise-multi-branch-network/
 
 # Development Roadmap
 
-## ✅ v0.1.0
-
-- Enterprise topology redesign
-- Professional branch layouts
-- Standardized device naming
-- Improved visual consistency
-- GitHub repository
-- Initial project documentation
-
----
-
-## ✅ v0.2.0
-
-- Headquarters security hardening
-- SSH management
-- Local user authentication
-- Port Security
-- BPDU Guard
-- Parking VLAN implementation
-- Native VLAN hardening
-- Disabled Dynamic Trunking Protocol (DTP)
+| Version | Status | Description |
+|----------|:------:|-------------|
+| v0.1.0 | Complete | Enterprise topology redesign |
+| v0.2.0 | Complete | Headquarters security hardening |
+| v0.3.0 | Complete | Infrastructure services deployment |
+| v0.4.0 | Complete | Enterprise-wide OSPF deployment |
+| v0.5.0 | Complete | Enterprise security hardening |
+| v0.6.0 | Complete | Infrastructure standardization |
+| v0.7.0 | Complete | Documentation and repository enhancement |
+| v0.8.0 | In Progress | Final optimization and validation |
+| v1.0.0 | Planned | Stable public release |
 
 ---
 
-## ✅ v0.3.0
+# Changelog
 
-- Private IPv4 addressing
-- Centralized DHCP deployment
-- DNS deployment
-- Syslog deployment
-- NTP deployment
-- HTTP server
-- TFTP backup server
-- Enterprise infrastructure services
+A complete project history is available in **CHANGELOG.md**.
 
 ---
 
-## ✅ v0.4.0
+# License
 
-- Enterprise-wide OSPF deployment
-- Migration from static routing to dynamic routing
-- Dynamic route advertisement between all sites
-- OSPF Area 0 backbone implementation
-- Automatic route learning across the WAN
-- Removal of legacy enterprise static routes
-- Full enterprise WAN connectivity validation
+This project is licensed under the MIT License.
 
----
-
-## ✅ v0.5.0
-
-- Enterprise-wide Access Control Lists (ACLs)
-- Department isolation policies
-- Wireless network isolation
-- IoT network isolation
-- Secure SSH deployment across all Layer 3 devices
-- Management access restricted to authorized management networks
-- Standardized router and Layer 3 switch security baseline
-- Enterprise credential standardization
-- Full enterprise security validation
-
----
-
-## ✅ v0.6.0
-
-- Infrastructure configuration standardization
-- Standardized interface descriptions
-- Enterprise MOTD banner deployment
-- Consistent management account configuration
-- Removal of obsolete static routes and legacy configuration
-- Configuration cleanup across all Layer 3 devices
-- Enterprise configuration consistency improvements
-
----
-
-## Planned
-
-- SNMP monitoring
-- Network performance monitoring
-- Automated configuration management
-- High availability enhancements
-- Additional enterprise security controls
-- Final production validation
-- Version 1.0.0 release
-
----
-
-# Version History
-
-| Version | Description |
-|----------|-------------|
-| v0.1.0 | Enterprise topology redesign |
-| v0.2.0 | Headquarters security hardening |
-| v0.3.0 | Enterprise infrastructure services deployment |
-| v0.4.0 | Migrated enterprise WAN from static routing to OSPF |
-| v0.5.0 | Enterprise security hardening with ACLs and secure SSH management |
-| v0.6.0 | Enterprise infrastructure standardization and configuration optimization |
+See **LICENSE** for details.
 
 ---
 
@@ -266,4 +273,4 @@ enterprise-multi-branch-network/
 
 Cybersecurity Student
 
-GitHub: [CezarSecurity](https://github.com/CezarSecurity)
+GitHub: https://github.com/CezarSecurity

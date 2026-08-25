@@ -1,0 +1,377 @@
+!
+version 12.2(37)SE1
+service timestamps log datetime msec
+no service timestamps debug datetime msec
+service password-encryption
+!
+hostname KL-DIST
+!
+!
+no profinet
+enable secret 5 $1$mERr$OQbVj29IGFG5IXoBk.XHw0
+!
+!
+ip dhcp excluded-address 10.10.10.1 10.10.10.10
+ip dhcp excluded-address 10.10.20.1 10.10.20.10
+ip dhcp excluded-address 10.10.30.1 10.10.30.10
+ip dhcp excluded-address 10.10.40.1 10.10.40.10
+ip dhcp excluded-address 10.10.50.1 10.10.50.10
+ip dhcp excluded-address 10.10.60.1 10.10.60.10
+ip dhcp excluded-address 10.10.70.1 10.10.70.10
+ip dhcp excluded-address 10.10.80.1 10.10.80.10
+ip dhcp excluded-address 10.10.99.1 10.10.99.20
+!
+ip dhcp pool OPS
+ network 10.10.10.0 255.255.255.224
+ default-router 10.10.10.1
+ dns-server 10.10.40.10
+ip dhcp pool ADMIN
+ network 10.10.20.0 255.255.255.224
+ default-router 10.10.20.1
+ dns-server 10.10.40.10
+ip dhcp pool IT
+ network 10.10.30.0 255.255.255.224
+ default-router 10.10.30.1
+ dns-server 10.10.40.10
+ip dhcp pool FINANCE
+ network 10.10.50.0 255.255.255.224
+ default-router 10.10.50.1
+ dns-server 10.10.40.10
+ip dhcp pool WIRELESS
+ network 10.10.60.0 255.255.255.0
+ default-router 10.10.60.1
+ dns-server 10.10.40.10
+ip dhcp pool HR
+ network 10.10.70.0 255.255.255.224
+ default-router 10.10.70.1
+ dns-server 10.10.40.10
+ip dhcp pool IOT
+ network 10.10.80.0 255.255.255.0
+ default-router 10.10.80.1
+ dns-server 10.10.40.10
+!
+!
+ip routing
+!
+!
+!
+!
+username cezar privilege 15 secret 5 $1$mERr$OQbVj29IGFG5IXoBk.XHw0
+username netadmin privilege 15 secret 5 $1$mERr$OQbVj29IGFG5IXoBk.XHw0
+username test privilege 15 secret 5 $1$mERr$1OZpX/Q.FqhvCfZYyxdZY.
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip ssh version 2
+no ip domain-lookup
+ip domain-name projectzero.local
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/1
+ description Trunk to KL-OPS
+ switchport trunk native vlan 998
+ switchport trunk allowed vlan 10,20,30,40,50,60,70,80,99
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface FastEthernet0/2
+ description Trunk to KL-ADMIN
+ switchport trunk native vlan 998
+ switchport trunk allowed vlan 10,20,30,40,50,60,70,80,99
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface FastEthernet0/3
+ description Trunk to KL-IT
+ switchport trunk native vlan 998
+ switchport trunk allowed vlan 10,20,30,40,50,60,70,80,99
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface FastEthernet0/4
+ description Trunk to KL-SERVER
+ switchport trunk native vlan 998
+ switchport trunk allowed vlan 10,20,30,40,50,60,70,80,99
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface FastEthernet0/5
+ description Trunk to KL-FIN
+ switchport trunk native vlan 998
+ switchport trunk allowed vlan 10,20,30,40,50,60,70,80,99
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface FastEthernet0/6
+ description Trunk to KL-HR
+ switchport trunk native vlan 998
+ switchport trunk allowed vlan 10,20,30,40,50,60,70,80,99
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface FastEthernet0/7
+ description Trunk to KL-WIFI
+ switchport trunk native vlan 998
+ switchport trunk allowed vlan 10,20,30,40,50,60,70,80,99
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface FastEthernet0/8
+ description Trunk to KL-MGMT
+ switchport trunk native vlan 998
+ switchport trunk allowed vlan 10,20,30,40,50,60,70,80,99
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface FastEthernet0/9
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/10
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/11
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/12
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/13
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/14
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/15
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/16
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/17
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/18
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/19
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/20
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/21
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/22
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/23
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/24
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet0/1
+ description Routed Uplink to KL-RTR
+ no switchport
+ ip address 10.255.0.2 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/2
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan10
+ mac-address 00d0.97de.ab01
+ ip address 10.10.10.1 255.255.255.224
+ ip access-group OPS-ACL in
+!
+interface Vlan20
+ mac-address 00d0.97de.ab02
+ ip address 10.10.20.1 255.255.255.224
+ ip access-group ADMIN-ACL in
+!
+interface Vlan30
+ mac-address 00d0.97de.ab03
+ ip address 10.10.30.1 255.255.255.224
+!
+interface Vlan40
+ mac-address 00d0.97de.ab04
+ ip address 10.10.40.1 255.255.255.224
+!
+interface Vlan50
+ mac-address 00d0.97de.ab05
+ ip address 10.10.50.1 255.255.255.224
+ ip access-group FINANCE-ACL in
+!
+interface Vlan60
+ mac-address 00d0.97de.ab06
+ ip address 10.10.60.1 255.255.255.0
+ ip access-group WIRELESS-ACL in
+!
+interface Vlan70
+ mac-address 00d0.97de.ab07
+ ip address 10.10.70.1 255.255.255.224
+ ip access-group HR-ACL in
+!
+interface Vlan80
+ mac-address 00d0.97de.ab08
+ ip address 10.10.80.1 255.255.255.0
+ ip access-group IOT-ACL in
+!
+interface Vlan99
+ mac-address 00d0.97de.ab09
+ ip address 10.10.99.1 255.255.255.224
+!
+router ospf 10
+ router-id 1.1.1.1
+ log-adjacency-changes
+ passive-interface default
+ no passive-interface GigabitEthernet0/1
+ network 10.255.0.0 0.0.0.3 area 0
+ network 10.10.0.0 0.0.255.255 area 0
+!
+ip classless
+ip route 0.0.0.0 0.0.0.0 10.255.0.1 
+!
+ip flow-export version 9
+!
+!
+ip access-list extended FINANCE-ACL
+ deny ip 10.10.50.0 0.0.0.31 10.10.70.0 0.0.0.31
+ permit ip any any
+ip access-list extended HR-ACL
+ deny ip 10.10.70.0 0.0.0.31 10.10.50.0 0.0.0.31
+ permit ip any any
+ip access-list extended OPS-ACL
+ deny ip 10.10.10.0 0.0.0.31 10.10.50.0 0.0.0.31
+ permit ip any any
+ip access-list extended ADMIN-ACL
+ deny ip 10.10.20.0 0.0.0.31 10.10.50.0 0.0.0.31
+ permit ip any any
+ip access-list extended WIRELESS-ACL
+ deny ip 10.10.60.0 0.0.0.255 10.10.10.0 0.0.0.31
+ deny ip 10.10.60.0 0.0.0.255 10.10.20.0 0.0.0.31
+ deny ip 10.10.60.0 0.0.0.255 10.10.30.0 0.0.0.31
+ deny ip 10.10.60.0 0.0.0.255 10.10.50.0 0.0.0.31
+ deny ip 10.10.60.0 0.0.0.255 10.10.70.0 0.0.0.31
+ deny ip 10.10.60.0 0.0.0.255 10.10.99.0 0.0.0.31
+ permit ip any any
+ip access-list extended IOT-ACL
+ permit udp 10.10.80.0 0.0.0.255 host 10.10.40.10 eq domain
+ deny ip 10.10.80.0 0.0.0.255 any
+ip access-list standard SSH-MGMT
+ permit 10.10.30.0 0.0.0.31
+ permit 10.10.99.0 0.0.0.31
+!
+banner motd #
+****************************************************
+*        PROJECT ZERO ENTERPRISE NETWORK           *
+*                                                  *
+*              AUTHORIZED ACCESS ONLY              *
+*                                                  *
+* Unauthorized access is prohibited.               *
+****************************************************
+#
+!
+!
+!
+!
+!
+logging 10.10.40.12
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ access-class SSH-MGMT in
+ login local
+ transport input ssh
+line vty 5 15
+ access-class SSH-MGMT in
+ login local
+ transport input ssh
+!
+!
+!
+ntp server 10.10.40.14
+!
+end
+

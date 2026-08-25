@@ -1,0 +1,233 @@
+!
+version 12.2(37)SE1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+service password-encryption
+!
+hostname KOTA-DIST
+!
+!
+no profinet
+enable secret 5 $1$mERr$OQbVj29IGFG5IXoBk.XHw0
+!
+!
+!
+!
+!
+ip routing
+!
+!
+!
+!
+username netadmin privilege 15 secret 5 $1$mERr$OQbVj29IGFG5IXoBk.XHw0
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip ssh version 2
+ip domain-name projectzero.local
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/1
+ description Trunk to KOTA Access Switch 1
+ switchport trunk native vlan 299
+ switchport trunk allowed vlan 210,220,230,240,250,260,270,280,299
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet0/2
+ description Trunk to KOTA Access Switch 2
+ switchport trunk native vlan 299
+ switchport trunk allowed vlan 210,220,230,240,250,260,270,280,299
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet0/3
+ description Trunk to KOTA Access Switch 3
+ switchport trunk native vlan 299
+ switchport trunk allowed vlan 210,220,230,240,250,260,270,280,299
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet0/4
+ description Trunk to KOTA Access Switch 4
+ switchport trunk native vlan 299
+ switchport trunk allowed vlan 210,220,230,240,250,260,270,280,299
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet0/5
+ description Trunk to KOTA Access Switch 5
+ switchport trunk native vlan 299
+ switchport trunk allowed vlan 210,220,230,240,250,260,270,280,299
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet0/6
+ description Trunk to KOTA Access Switch 6
+ switchport trunk native vlan 299
+ switchport trunk allowed vlan 210,220,230,240,250,260,270,280,299
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet0/7
+ description Trunk to KOTA Access Switch 7
+ switchport trunk native vlan 299
+ switchport trunk allowed vlan 210,220,230,240,250,260,270,280,299
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet0/8
+ description Trunk to KOTA Access Switch 8
+ switchport trunk native vlan 299
+ switchport trunk allowed vlan 210,220,230,240,250,260,270,280,299
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet0/9
+ description Trunk to KOTA Access Switch 9
+ switchport trunk native vlan 299
+ switchport trunk allowed vlan 210,220,230,240,250,260,270,280,299
+!
+interface FastEthernet0/10
+!
+interface FastEthernet0/11
+!
+interface FastEthernet0/12
+!
+interface FastEthernet0/13
+!
+interface FastEthernet0/14
+!
+interface FastEthernet0/15
+!
+interface FastEthernet0/16
+!
+interface FastEthernet0/17
+!
+interface FastEthernet0/18
+!
+interface FastEthernet0/19
+!
+interface FastEthernet0/20
+!
+interface FastEthernet0/21
+!
+interface FastEthernet0/22
+!
+interface FastEthernet0/23
+!
+interface FastEthernet0/24
+!
+interface GigabitEthernet0/1
+ description Routed Uplink to KOTA-RTR
+ no switchport
+ ip address 200.40.0.2 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan210
+ mac-address 0030.f202.1901
+ ip address 200.40.40.1 255.255.255.224
+!
+interface Vlan220
+ mac-address 0030.f202.1902
+ ip address 200.40.40.33 255.255.255.224
+!
+interface Vlan230
+ mac-address 0030.f202.1903
+ ip address 200.40.40.65 255.255.255.224
+!
+interface Vlan240
+ mac-address 0030.f202.1904
+ ip address 200.40.40.97 255.255.255.224
+!
+interface Vlan250
+ mac-address 0030.f202.1905
+ ip address 200.40.40.129 255.255.255.224
+!
+interface Vlan260
+ mac-address 0030.f202.1906
+ ip address 200.40.40.161 255.255.255.224
+!
+interface Vlan270
+ mac-address 0030.f202.1907
+ ip address 200.40.40.193 255.255.255.224
+!
+interface Vlan280
+ mac-address 0030.f202.1908
+ ip address 200.40.40.225 255.255.255.224
+!
+interface Vlan299
+ mac-address 0030.f202.1909
+ no ip address
+!
+router ospf 10
+ router-id 4.4.4.2
+ log-adjacency-changes
+ passive-interface default
+ no passive-interface GigabitEthernet0/1
+ network 200.40.0.0 0.0.0.3 area 0
+ network 200.40.40.0 0.0.0.255 area 0
+!
+ip classless
+ip route 0.0.0.0 0.0.0.0 200.40.0.1 
+!
+ip flow-export version 9
+!
+!
+ip access-list standard SSH-MGMT
+ permit 10.10.30.0 0.0.0.31
+ permit 10.10.99.0 0.0.0.31
+!
+banner motd #
+****************************************************
+*        PROJECT ZERO ENTERPRISE NETWORK           *
+*                                                  *
+*              AUTHORIZED ACCESS ONLY              *
+*                                                  *
+* Unauthorized access is prohibited.               *
+****************************************************
+#
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ access-class SSH-MGMT in
+ login local
+ transport input ssh
+line vty 5 15
+ access-class SSH-MGMT in
+ login local
+ transport input ssh
+!
+!
+!
+!
+end
+
