@@ -73,64 +73,75 @@ spanning-tree mode pvst
 !
 interface FastEthernet0/1
  description Trunk to KOTA Access Switch 1
- switchport trunk native vlan 299
+ switchport trunk native vlan 998
  switchport trunk allowed vlan 210,220,230,240,250,260,270,280,299
  switchport trunk encapsulation dot1q
  switchport mode trunk
+ switchport nonegotiate
 !
 interface FastEthernet0/2
  description Trunk to KOTA Access Switch 2
- switchport trunk native vlan 299
+ switchport trunk native vlan 998
  switchport trunk allowed vlan 210,220,230,240,250,260,270,280,299
  switchport trunk encapsulation dot1q
  switchport mode trunk
+ switchport nonegotiate
 !
 interface FastEthernet0/3
  description Trunk to KOTA Access Switch 3
- switchport trunk native vlan 299
+ switchport trunk native vlan 998
  switchport trunk allowed vlan 210,220,230,240,250,260,270,280,299
  switchport trunk encapsulation dot1q
  switchport mode trunk
+ switchport nonegotiate
 !
 interface FastEthernet0/4
  description Trunk to KOTA Access Switch 4
- switchport trunk native vlan 299
+ switchport trunk native vlan 998
  switchport trunk allowed vlan 210,220,230,240,250,260,270,280,299
  switchport trunk encapsulation dot1q
  switchport mode trunk
+ switchport nonegotiate
 !
 interface FastEthernet0/5
  description Trunk to KOTA Access Switch 5
- switchport trunk native vlan 299
+ switchport trunk native vlan 998
  switchport trunk allowed vlan 210,220,230,240,250,260,270,280,299
  switchport trunk encapsulation dot1q
  switchport mode trunk
+ switchport nonegotiate
 !
 interface FastEthernet0/6
  description Trunk to KOTA Access Switch 6
- switchport trunk native vlan 299
+ switchport trunk native vlan 998
  switchport trunk allowed vlan 210,220,230,240,250,260,270,280,299
  switchport trunk encapsulation dot1q
  switchport mode trunk
+ switchport nonegotiate
 !
 interface FastEthernet0/7
  description Trunk to KOTA Access Switch 7
- switchport trunk native vlan 299
+ switchport trunk native vlan 998
  switchport trunk allowed vlan 210,220,230,240,250,260,270,280,299
  switchport trunk encapsulation dot1q
  switchport mode trunk
+ switchport nonegotiate
 !
 interface FastEthernet0/8
  description Trunk to KOTA Access Switch 8
- switchport trunk native vlan 299
+ switchport trunk native vlan 998
  switchport trunk allowed vlan 210,220,230,240,250,260,270,280,299
  switchport trunk encapsulation dot1q
  switchport mode trunk
+ switchport nonegotiate
 !
 interface FastEthernet0/9
  description Trunk to KOTA Access Switch 9
- switchport trunk native vlan 299
+ switchport trunk native vlan 998
  switchport trunk allowed vlan 210,220,230,240,250,260,270,280,299
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
 !
 interface FastEthernet0/10
 !
