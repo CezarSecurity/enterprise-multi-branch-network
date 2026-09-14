@@ -4,7 +4,7 @@ no service timestamps log datetime msec
 no service timestamps debug datetime msec
 service password-encryption
 !
-hostname KL-RTR
+hostname HQ-RTR-01
 !
 !
 !
@@ -47,7 +47,7 @@ spanning-tree mode pvst
 !
 !
 interface GigabitEthernet0/0
- description Link to KL-DIST
+ description Link to HQ-CORE-SW1
  ip address 10.255.0.1 255.255.255.252
  duplex auto
  speed auto
@@ -65,17 +65,17 @@ interface GigabitEthernet0/2
  shutdown
 !
 interface Serial0/0/0
- description WAN Link to PNG-RTR
+ description WAN Link to PG-RTR-01
  ip address 200.0.0.1 255.255.255.252
  clock rate 64000
 !
 interface Serial0/0/1
- description WAN Link to JB-RTR
+ description WAN Link to JB-RTR-01
  ip address 200.0.0.5 255.255.255.252
  clock rate 64000
 !
 interface Serial0/1/0
- description WAN Link to KOTA-RTR
+ description WAN Link to KK-RTR-01
  ip address 200.0.0.9 255.255.255.252
  clock rate 64000
 !
@@ -103,7 +103,6 @@ router ospf 10
  network 200.0.0.8 0.0.0.3 area 0
 !
 ip classless
-ip route 0.0.0.0 0.0.0.0 200.0.0.14 
 !
 ip flow-export version 9
 !
