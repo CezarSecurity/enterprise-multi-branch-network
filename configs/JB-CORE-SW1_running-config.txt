@@ -297,6 +297,7 @@ router ospf 10
  no passive-interface GigabitEthernet0/1
  network 200.30.0.0 0.0.0.3 area 0
  network 200.30.30.0 0.0.0.255 area 0
+ network 200.30.31.0 0.0.0.31 area 0
 !
 ip classless
 ip route 0.0.0.0 0.0.0.0 200.30.0.1 
