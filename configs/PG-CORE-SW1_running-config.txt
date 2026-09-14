@@ -134,38 +134,106 @@ interface FastEthernet0/7
  switchport nonegotiate
 !
 interface FastEthernet0/8
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
 !
 interface FastEthernet0/9
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
 !
 interface FastEthernet0/10
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
 !
 interface FastEthernet0/11
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
 !
 interface FastEthernet0/12
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
 !
 interface FastEthernet0/13
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
 !
 interface FastEthernet0/14
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
 !
 interface FastEthernet0/15
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
 !
 interface FastEthernet0/16
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
 !
 interface FastEthernet0/17
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
 !
 interface FastEthernet0/18
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
 !
 interface FastEthernet0/19
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
 !
 interface FastEthernet0/20
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
 !
 interface FastEthernet0/21
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
 !
 interface FastEthernet0/22
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
 !
 interface FastEthernet0/23
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
 !
 interface FastEthernet0/24
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
 !
 interface GigabitEthernet0/1
  description Routed Uplink to PG-RTR-01
@@ -175,6 +243,10 @@ interface GigabitEthernet0/1
  speed auto
 !
 interface GigabitEthernet0/2
+ description UNUSED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
 !
 interface Vlan1
  no ip address
@@ -183,6 +255,7 @@ interface Vlan1
 interface Vlan15
  mac-address 00e0.f704.3301
  ip address 200.20.20.1 255.255.255.224
+ ip access-group CUSTOMER-ACL in
 !
 interface Vlan25
  mac-address 00e0.f704.3302
@@ -191,10 +264,12 @@ interface Vlan25
 interface Vlan35
  mac-address 00e0.f704.3303
  ip address 200.20.20.65 255.255.255.224
+ ip access-group SALES-ACL in
 !
 interface Vlan45
  mac-address 00e0.f704.3304
  ip address 200.20.20.97 255.255.255.224
+ ip access-group LOGISTICS-ACL in
 !
 interface Vlan55
  mac-address 00e0.f704.3305
@@ -203,10 +278,12 @@ interface Vlan55
 interface Vlan65
  mac-address 00e0.f704.3306
  ip address 200.20.20.161 255.255.255.224
+ ip access-group WIRELESS-ACL in
 !
 interface Vlan75
  mac-address 00e0.f704.3307
  ip address 200.20.20.193 255.255.255.224
+ ip access-group IOT-ACL in
 !
 interface Vlan85
  mac-address 00e0.f704.3308
@@ -233,6 +310,26 @@ ip flow-export version 9
 ip access-list standard SSH-MGMT
  permit 10.10.30.0 0.0.0.31
  permit 10.10.99.0 0.0.0.31
+ip access-list extended CUSTOMER-ACL
+ deny ip 200.20.20.0 0.0.0.31 200.20.20.224 0.0.0.31
+ permit ip any any
+ip access-list extended SALES-ACL
+ deny ip 200.20.20.64 0.0.0.31 200.20.20.224 0.0.0.31
+ permit ip any any
+ip access-list extended LOGISTICS-ACL
+ deny ip 200.20.20.96 0.0.0.31 200.20.20.224 0.0.0.31
+ permit ip any any
+ip access-list extended WIRELESS-ACL
+ deny ip 200.20.20.160 0.0.0.31 200.20.20.0 0.0.0.31
+ deny ip 200.20.20.160 0.0.0.31 200.20.20.32 0.0.0.31
+ deny ip 200.20.20.160 0.0.0.31 200.20.20.64 0.0.0.31
+ deny ip 200.20.20.160 0.0.0.31 200.20.20.96 0.0.0.31
+ deny ip 200.20.20.160 0.0.0.31 200.20.20.224 0.0.0.31
+ deny ip 200.20.20.160 0.0.0.31 200.20.21.0 0.0.0.31
+ permit ip any any
+ip access-list extended IOT-ACL
+ permit udp 200.20.20.192 0.0.0.31 host 10.10.40.10 eq domain
+ deny ip 200.20.20.192 0.0.0.31 any
 !
 banner motd #
 ****************************************************
