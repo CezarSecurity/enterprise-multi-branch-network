@@ -11,7 +11,6 @@ no profinet
 enable secret 5 $1$mERr$OQbVj29IGFG5IXoBk.XHw0
 !
 !
-ip dhcp excluded-address 200.20.20.1 200.20.20.10
 ip dhcp excluded-address 200.20.20.33 200.20.20.42
 ip dhcp excluded-address 200.20.20.65 200.20.20.74
 ip dhcp excluded-address 200.20.20.97 200.20.20.106
@@ -19,6 +18,7 @@ ip dhcp excluded-address 200.20.20.129 200.20.20.138
 ip dhcp excluded-address 200.20.20.161 200.20.20.170
 ip dhcp excluded-address 200.20.20.193 200.20.20.202
 ip dhcp excluded-address 200.20.20.225 200.20.20.234
+ip dhcp excluded-address 200.20.20.1
 !
 ip dhcp pool CUSTOMER
  network 200.20.20.0 255.255.255.224
@@ -47,10 +47,6 @@ ip dhcp pool WIRELESS
 ip dhcp pool IOT
  network 200.20.20.192 255.255.255.224
  default-router 200.20.20.193
- dns-server 10.10.40.10
-ip dhcp pool EXECUTIVE
- network 200.20.20.224 255.255.255.224
- default-router 200.20.20.225
  dns-server 10.10.40.10
 !
 !
