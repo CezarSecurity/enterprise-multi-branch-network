@@ -4,14 +4,44 @@ no service timestamps log datetime msec
 no service timestamps debug datetime msec
 service password-encryption
 !
-hostname KOTA-DIST
+hostname KK-CORE-SW1
 !
 !
 no profinet
 enable secret 5 $1$mERr$OQbVj29IGFG5IXoBk.XHw0
 !
 !
+ip dhcp excluded-address 200.40.40.1
+ip dhcp excluded-address 200.40.40.33
+ip dhcp excluded-address 200.40.40.65
+ip dhcp excluded-address 200.40.40.97
+ip dhcp excluded-address 200.40.40.161
+ip dhcp excluded-address 200.40.40.225
 !
+ip dhcp pool STRATEGY
+ network 200.40.40.0 255.255.255.224
+ default-router 200.40.40.1
+ dns-server 10.10.40.10
+ip dhcp pool ACCOUNTS
+ network 200.40.40.32 255.255.255.224
+ default-router 200.40.40.33
+ dns-server 10.10.40.10
+ip dhcp pool TALENT
+ network 200.40.40.64 255.255.255.224
+ default-router 200.40.40.65
+ dns-server 10.10.40.10
+ip dhcp pool TECHSUPPORT
+ network 200.40.40.96 255.255.255.224
+ default-router 200.40.40.97
+ dns-server 10.10.40.10
+ip dhcp pool WIRELESS
+ network 200.40.40.160 255.255.255.224
+ default-router 200.40.40.161
+ dns-server 10.10.40.10
+ip dhcp pool CLIENTSUCCESS
+ network 200.40.40.224 255.255.255.224
+ default-router 200.40.40.225
+ dns-server 10.10.40.10
 !
 !
 ip routing
@@ -133,7 +163,7 @@ interface FastEthernet0/23
 interface FastEthernet0/24
 !
 interface GigabitEthernet0/1
- description Routed Uplink to KOTA-RTR
+ description Routed Uplink to KK-RTR-01
  no switchport
  ip address 200.40.0.2 255.255.255.252
  duplex auto
@@ -213,6 +243,7 @@ banner motd #
 !
 !
 !
+logging 10.10.40.12
 line con 0
 !
 line aux 0
@@ -228,6 +259,7 @@ line vty 5 15
 !
 !
 !
+ntp server 10.10.40.14
 !
 end
 
