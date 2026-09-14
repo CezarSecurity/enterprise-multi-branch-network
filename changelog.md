@@ -6,6 +6,35 @@ This project follows semantic versioning during development, with milestone rele
 
 ---
 
+## [v1.0.0] - Enterprise-Wide Standardization and Security Hardening
+
+Note: v0.8.0 and v0.9.0 were planned but skipped — all remaining work was completed and released directly as v1.0.0 rather than staged across additional pre-release versions.
+
+### Added
+
+- Standardized device naming across all branches, matching headquarters' convention (`PG-CORE-SW1`/`PG-RTR-01`, `JB-CORE-SW1`/`JB-RTR-01`, `KK-CORE-SW1`/`KK-RTR-01`)
+- Branch management VLAN addressing at Penang and Johor Bahru, with static assignments for administrative devices
+- Per-branch DHCP pools, sized to actual department device counts
+- Centralized Syslog and NTP configuration on all branch devices
+- OSPF advertisement of branch management subnets, closing a gap where they were locally functional but unreachable enterprise-wide
+- Trunk hardening on all branches: DTP disabled, dedicated unused native VLAN (998), standardized trunk configuration across every distribution and access switch
+- Unused switchport hardening on all branches: administrative shutdown, dedicated parking VLAN (999)
+- Port Security, sticky MAC learning, and BPDU Guard on all branch access switches
+- Per-site Extended ACLs enforcing department, wireless, and IoT isolation, tailored to each branch's most sensitive department
+- Full documentation refresh across all `docs/` files to accurately reflect the deployed network
+
+### Changed
+
+- Removed a dead default route on the headquarters router pointing to an unreachable, non-existent next hop
+- Updated interface descriptions enterprise-wide to reflect standardized device naming
+- Corrected DHCP pool exclusions after real-world testing revealed lease failures in a fully populated department; exclusions now reserve only the gateway address rather than a fixed block
+
+### Removed
+
+- Decorative, non-functional server devices at Penang, Johor Bahru, and Kota Kinabalu
+
+---
+
 ## [v0.7.0] - Documentation & Repository Enhancement
 
 ### Added
@@ -136,28 +165,3 @@ This project follows semantic versioning during development, with milestone rele
 - Standardized device naming
 - GitHub repository
 - Initial project documentation
-
----
-
-## Upcoming
-
-### v0.8.0
-
-Planned improvements include:
-
-- Final configuration optimization
-- Repository polish
-- Additional enterprise validation
-- Documentation refinement
-
-### v0.9.0
-
-Planned improvements include:
-
-- Final production validation
-- Repository quality improvements
-- Release preparation
-
-### v1.0.0
-
-Initial stable release of Project Zero.

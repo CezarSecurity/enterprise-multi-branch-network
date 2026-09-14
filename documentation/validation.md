@@ -1,6 +1,6 @@
 # Network Validation
 
-The enterprise network has been tested to verify functionality, connectivity, routing, and security.
+The enterprise network has been tested to verify functionality, connectivity, routing, and security across all four sites.
 
 ---
 
@@ -8,9 +8,9 @@ The enterprise network has been tested to verify functionality, connectivity, ro
 
 Tests Performed
 
-- OSPF neighbor formation
-- Dynamic route advertisement
-- End-to-end WAN routing
+- OSPF neighbor formation across all WAN links
+- Dynamic route advertisement, including branch management subnets
+- End-to-end WAN routing between headquarters and all branches
 
 Result
 
@@ -22,13 +22,16 @@ PASS
 
 Tests Performed
 
-- Automatic IP address assignment
+- Automatic IP address assignment per department VLAN, at headquarters and all three branches
 - Default gateway assignment
 - DNS server assignment
+- Pool sizing validated against real device counts per department
 
 Result
 
 PASS
+
+Note: initial DHCP exclusions at one branch were sized too conservatively for a fully populated department, causing lease failures under real load. Pool exclusions were corrected to reserve only the gateway address rather than a fixed block, resolving the issue with adequate headroom.
 
 ---
 
@@ -51,7 +54,7 @@ Tests Performed
 
 - Secure remote device access
 - Local authentication
-- VTY ACL enforcement
+- VTY ACL enforcement, confirming SSH access is restricted to headquarters' IT and Management VLANs across every site
 
 Result
 
@@ -59,14 +62,30 @@ PASS
 
 ---
 
+## Layer 2 Security Validation
+
+Tests Performed
+
+- Native VLAN consistency across all trunk links, distribution switch to access switch
+- Dynamic Trunking Protocol (DTP) disabled on all trunk ports
+- Port Security and BPDU Guard enforcement on all access ports
+
+Result
+
+PASS
+
+Notes: during native VLAN hardening, a genuine PVID mismatch was observed and confirmed working as intended — Spanning Tree correctly blocked a trunk port until both ends were aligned to the hardened native VLAN, demonstrating the control functions as designed rather than being merely configured. Separately, a blanket Port Security deployment briefly misapplied access-port settings to one switch's trunk uplink; this was identified through the resulting violation logs and corrected before rollout to the remaining switches.
+
+---
+
 ## Access Control Validation
 
 Tests Performed
 
-- Finance department isolation
-- Human Resources isolation
-- Wireless client restrictions
-- IoT network isolation
+- Headquarters: Finance isolation, Human Resources isolation, wireless client restrictions, IoT network isolation
+- Penang: Executive isolation from Customer, Sales, and Logistics; wireless and IoT restrictions
+- Johor Bahru: Corporate isolation from Operations and Procurement; wireless and IoT restrictions
+- Kota Kinabalu: Accounts isolation from Talent, Technical Support, and Client Success; wireless and IoT restrictions
 
 Result
 
@@ -78,12 +97,15 @@ PASS
 
 Verified Services
 
-- DHCP
+Centralized at headquarters, used by all sites:
 - DNS
 - HTTP
 - Syslog
 - NTP
 - TFTP
+
+Distributed per site:
+- DHCP — independent local pools at headquarters and each branch
 
 Result
 
@@ -99,12 +121,6 @@ Key capabilities include:
 
 - Layer 3 switching
 - Department-based VLAN segmentation
-- Dynamic routing using OSPF
-- Secure device management
-- Access control enforcement
-- Centralized infrastructure services
-- Enterprise configuration standardization
-
-Overall Validation Status
-
-PASS
+- Dynamic routing using OSPF, including management subnet reachability
+- Secure, centralized device management
+-
