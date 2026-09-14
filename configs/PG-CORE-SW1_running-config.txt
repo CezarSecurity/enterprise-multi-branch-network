@@ -79,40 +79,59 @@ spanning-tree mode pvst
 !
 interface FastEthernet0/1
  description Trunk to PNG Access Switch 1
- switchport trunk native vlan 99
- switchport trunk allowed vlan 15,25,35,45,55,65,75,85,99
-!
-interface FastEthernet0/2
- description Trunk to PNG Access Switch 2
- switchport trunk native vlan 99
- switchport trunk allowed vlan 15,25,35,45,55,65,75,85,99
-!
-interface FastEthernet0/3
- description Trunk to PNG Access Switch 3
- switchport trunk native vlan 99
- switchport trunk allowed vlan 15,25,35,45,55,65,75,85,99
-!
-interface FastEthernet0/4
- description Trunk to PNG Access Switch 4
- switchport trunk native vlan 99
+ switchport trunk native vlan 998
  switchport trunk allowed vlan 15,25,35,45,55,65,75,85,99
  switchport trunk encapsulation dot1q
  switchport mode trunk
+ switchport nonegotiate
+!
+interface FastEthernet0/2
+ description Trunk to PNG Access Switch 2
+ switchport trunk native vlan 998
+ switchport trunk allowed vlan 15,25,35,45,55,65,75,85,99
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface FastEthernet0/3
+ description Trunk to PNG Access Switch 3
+ switchport trunk native vlan 998
+ switchport trunk allowed vlan 15,25,35,45,55,65,75,85,99
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface FastEthernet0/4
+ description Trunk to PNG Access Switch 4
+ switchport trunk native vlan 998
+ switchport trunk allowed vlan 15,25,35,45,55,65,75,85,99
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
 !
 interface FastEthernet0/5
  description Trunk to PNG Access Switch 5
- switchport trunk native vlan 99
+ switchport trunk native vlan 998
  switchport trunk allowed vlan 15,25,35,45,55,65,75,85,99
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
 !
 interface FastEthernet0/6
  description Trunk to PNG Access Switch 6
- switchport trunk native vlan 99
+ switchport trunk native vlan 998
  switchport trunk allowed vlan 15,25,35,45,55,65,75,85,99
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
 !
 interface FastEthernet0/7
  description Trunk to PNG Access Switch 7
- switchport trunk native vlan 99
+ switchport trunk native vlan 998
  switchport trunk allowed vlan 15,25,35,45,55,65,75,85,99
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
 !
 interface FastEthernet0/8
 !
